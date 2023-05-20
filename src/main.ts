@@ -8,13 +8,13 @@ import App from '@/App.vue'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
 
-console.log(import .meta.env)
+console.log(import.meta.env)
 
 
 const app = createApp(App)
 
-app.use(ElementPlus,{
-  locale:zhCn
+app.use(ElementPlus, {
+  locale: zhCn
 })
 // svg插件需要配置代码
 import 'virtual:svg-icons-register'
@@ -29,4 +29,24 @@ import globalComponent from '@/components';
 //安装自定义插件
 app.use(globalComponent)
 
+// 入口文件引入全局样式文件
+import '@/styles/index.scss'
+
+//测试代码：测试mock接口
+import axios from 'axios'
+
+//引入路由
+import router from './router'
+
+axios({
+  url: '/api/user/login',
+  method: "post",
+  data: {
+    username: 'admin',
+    password: '111111'
+  }
+})
+
+//注册模板路由
+app.use(router)
 app.mount('#app')
