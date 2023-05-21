@@ -7,7 +7,7 @@ import path from 'path'
 
 //mock插件提供方法
 import { viteMockServe } from 'vite-plugin-mock'
-export default defineConfig(({command}) => {
+export default defineConfig(({ command }) => {
   return {
     plugins: [
       vue(),
@@ -25,8 +25,8 @@ export default defineConfig(({command}) => {
     }, // ← ← ← ← ← ←
     resolve: {
       alias: {
-        "@": path.resolve("./src") //相对路径别名设置，使用@代替src
-      }
+        '@': path.resolve('./src'), //相对路径别名设置，使用@代替src
+      },
     },
     // scss全局变量的一个配置
     css: {
@@ -36,6 +36,6 @@ export default defineConfig(({command}) => {
           additionalData: '@import "./src/styles/variable.scss";',
         },
       },
-    }
+    },
   }
 })

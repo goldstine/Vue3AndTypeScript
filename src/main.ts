@@ -7,14 +7,12 @@ import App from '@/App.vue'
 // @ts-ignore
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
-
 console.log(import.meta.env)
-
 
 const app = createApp(App)
 
 app.use(ElementPlus, {
-  locale: zhCn
+  locale: zhCn,
 })
 // svg插件需要配置代码
 import 'virtual:svg-icons-register'
@@ -24,7 +22,7 @@ import 'virtual:svg-icons-register'
 // app.component('SvgIcon',SvgIcon)
 // 通过插件暴露多个自定义组件  index.ts
 // 引入自定义插件
-import globalComponent from '@/components';
+import globalComponent from '@/components'
 // console.log(globalComponent)
 //安装自定义插件
 app.use(globalComponent)
@@ -40,12 +38,17 @@ import router from './router'
 
 axios({
   url: '/api/user/login',
-  method: "post",
+  method: 'post',
   data: {
     username: 'admin',
-    password: '111111'
-  }
+    password: '111111',
+  },
 })
+
+//入口文件引入仓库
+import pinia from './store'
+//安装仓库pinia
+app.use(pinia)
 
 //注册模板路由
 app.use(router)
